@@ -17,7 +17,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/coffees/${_id}`, {
+                fetch(`https://coffe-store-server-sooty.vercel.app/coffees/${_id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())
@@ -28,7 +28,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remainingCoffees = coffees.filter(cof=>cof._id !== _id)
+                            const remainingCoffees = coffees.filter(cof => cof._id !== _id)
                             setCoffees(remainingCoffees)
                         }
                     })

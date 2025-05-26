@@ -1,33 +1,52 @@
+import axios from 'axios';
 import React from 'react';
 import Swal from 'sweetalert2';
 
 const AddCoffe = () => {
 
-    const handleSubmit = e=>{
+    const handleSubmit = e => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
         const coffeeData = Object.fromEntries(formData.entries())
         // console.log(coffeeData)
-        fetch("http://localhost:3000/coffees",{
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify(coffeeData)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.insertedId){
-                // alert("Coffe Added")
-                Swal.fire({
-                    title : "Coffee Added Successfuly",
-                    icon : "success",
-                    draggable : true
-                })
-                form.reset()
-            }
-        })
+
+        axios.post("https://coffe-store-server-sooty.vercel.app/coffees", coffeeData)
+            .then(data => {
+
+                if (data.data.insertedId) {
+                    //             // alert("Coffe Added")
+                    Swal.fire({
+                        title: "Coffee Added Successfuly",
+                        icon: "success",
+                        draggable: true
+                    })
+                    form.reset()
+                }
+            })
+            .catch(e => {
+                console.log(e)
+            })
+
+        // fetch("https://coffe-store-server-sooty.vercel.app/coffees", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(coffeeData)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.insertedId) {
+        //             // alert("Coffe Added")
+        //             Swal.fire({
+        //                 title: "Coffee Added Successfuly",
+        //                 icon: "success",
+        //                 draggable: true
+        //             })
+        //             form.reset()
+        //         }
+        //     })
     }
 
     return (

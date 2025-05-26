@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+// import React, { useState } from 'react';
+// import { useLoaderData } from 'react-router';
 import CoffeeCard from './CoffeeCard';
 
 const Home = () => {
-    const coffeeData = useLoaderData()
-    const [coffes, setCoffees] = useState(coffeeData)
+    // const coffeeData = useLoaderData()
+    // const [coffes, setCoffees] = useState(coffeeData)
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-5'>
-            {
+            {/* {
                 coffes.map(coffee=>
                 <CoffeeCard 
                 coffee={coffee} 
@@ -17,7 +17,7 @@ const Home = () => {
                 setCoffees={setCoffees}    
                 >
                 </CoffeeCard>)
-            }
+            } */}
         </div>
     );
 };

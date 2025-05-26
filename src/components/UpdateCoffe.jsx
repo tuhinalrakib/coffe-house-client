@@ -13,7 +13,7 @@ const UpdateCoffe = () => {
         const updateCoffee = Object.fromEntries(formData.entries())
 
         // updated coffe send to DB
-        fetch(`http://localhost:3000/coffees/${_id}`, {
+        fetch(`https://coffe-store-server-sooty.vercel.app/coffees/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
